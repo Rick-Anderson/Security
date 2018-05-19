@@ -55,6 +55,9 @@ namespace CookiePolicySample
                     case "/CreateTempCookie":
                         context.Response.Cookies.Append("Temp", "1");
                         break;
+                    case "/CreateEssentialCookie":
+                        context.Response.Cookies.Append("EssentialCookie", "2", new CookieOptions() { IsEssential = true });
+                        break;
                     case "/RemoveTempCookie":
                         context.Response.Cookies.Delete("Temp");
                         break;
@@ -83,6 +86,7 @@ namespace CookiePolicySample
             await response.WriteAsync($"<a href=\"{context.Request.PathBase}/Login\">Login</a><br>\r\n");
             await response.WriteAsync($"<a href=\"{context.Request.PathBase}/Logout\">Logout</a><br>\r\n");
             await response.WriteAsync($"<a href=\"{context.Request.PathBase}/CreateTempCookie\">Create Temp Cookie</a><br>\r\n");
+            await response.WriteAsync($"<a href=\"{context.Request.PathBase}/CreateEssentialCookie\">Create Essential Cookie</a><br>\r\n");
             await response.WriteAsync($"<a href=\"{context.Request.PathBase}/RemoveTempCookie\">Remove Temp Cookie</a><br>\r\n");
             await response.WriteAsync($"<a href=\"{context.Request.PathBase}/GrantConsent\">Grant Consent</a><br>\r\n");
             await response.WriteAsync($"<a href=\"{context.Request.PathBase}/WithdrawConsent\">Withdraw Consent</a><br>\r\n");
